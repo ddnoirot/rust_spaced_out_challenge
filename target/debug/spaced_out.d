@@ -1,1 +1,1 @@
-/home/danieln/Documents/Development/rust_workspace/spaced_out/target/debug/spaced_out: /home/danieln/Documents/Development/rust_workspace/spaced_out/src/main.rs
+/home/danieln/Documents/Development/rust_workspace/spaced_out/rust_spaced_out_challenge/target/debug/spaced_out: /home/danieln/Documents/Development/rust_workspace/spaced_out/rust_spaced_out_challenge/src/main.rs

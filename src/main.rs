@@ -21,23 +21,23 @@ use std::io::{ self, BufRead, BufReader };
 
 fn read_lines(filename: String) -> io::Lines<BufReader<File>> {
     let file = File::open(filename).unwrap();
-    return io::BufReader::new(file).lines();    
+    return BufReader::new(file).lines();    
 }
 
 fn main() {
     // Step 1: Read input file. Transform string input to multidimensional vector.
     let input_file = "input_files/5.in";
     let lines = read_lines(input_file.to_string());
-    let mut farm_dim: u32 = 0;
+    let mut farm_dim: usize = 0;
     let mut farm_val: Vec<Vec<u32>> = Vec::new();
+    
    
     for (i,line) in lines.into_iter().enumerate() {
         if i == 0 {
             let first_line  = line.unwrap();
-            let n: u32 = first_line.parse().unwrap();
+            let n: usize = first_line.parse().unwrap();
             farm_dim = n;
-        }
-        else { 
+        } else { 
             let n_line = line.unwrap();
             
             let n_line: Vec<u32> = n_line
@@ -45,12 +45,20 @@ fn main() {
                     .map(|s| s.parse().expect("parse error"))
                     .collect();
                 
-                farm_val.push(n_line);
+            farm_val.push(n_line);
         }
         
     }
     
+    for i in 0..farm_dim - 1 {
+        for j in 0..farm_dim - 1 {
+            let mut two_by_two: Vec<Vec<u32>> = Vec::with_capacity(2);
+            two_by_two.push(vec![farm_val[i][j]]);
+        }
+    } 
+            
     println!("{farm_dim}");
+    println!("Farm width N = {}", farm_val.len());
     println!("{:?}", farm_val);
     
     // Step 2
